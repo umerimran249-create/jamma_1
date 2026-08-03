@@ -25,6 +25,8 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
+  -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
+  text-size-adjust: 100%;
 }
 
 body {
@@ -33,10 +35,29 @@ body {
   background: var(--white);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 a { text-decoration: none; color: inherit; }
-img { display: block; max-width: 100%; }
+img { 
+  display: block; 
+  max-width: 100%; 
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Touch-friendly buttons and links */
+button, a, .btn {
+  -webkit-tap-highlight-color: rgba(198, 152, 47, 0.3);
+  touch-action: manipulation; /* Faster tap response */
+}
+
+/* Ensure text remains readable on all screen sizes */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--display);
@@ -172,7 +193,7 @@ nav a:hover, nav a.active { color: var(--gold-2); }
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 100px 6vw 60px;
+  padding: 120px 6vw 60px; /* clear fixed nav (74px) + breathing room */
   color: #fff;
   background: linear-gradient(rgba(11, 27, 43, 0.78), rgba(9, 20, 33, 0.88)),
     url('/images/hero.png') center / cover no-repeat;
@@ -183,6 +204,7 @@ nav a:hover, nav a.active { color: var(--gold-2); }
   padding: 9px 20px;
   border-radius: 6px;
   font-size: 0.98rem;
+  margin-top: 8px;
   margin-bottom: 22px;
 }
 .hero h1 {
@@ -200,7 +222,11 @@ nav a:hover, nav a.active { color: var(--gold-2); }
   color: rgba(255, 255, 255, 0.9);
 }
 .hero .subtitle .mark { font-weight: 600; letter-spacing: 4px; }
-.hero-btns { display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; }
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+.hero-btns .btn {
+  font-size: 0.92rem;
+  padding: 11px 22px;
+}
 
 /* ---------- Introduction (page 2) ---------- */
 .introduction {
@@ -221,31 +247,51 @@ nav a:hover, nav a.active { color: var(--gold-2); }
 }
 .introduction p { margin-bottom: 18px; color: var(--muted); }
 .introduction .col-text { position: relative; z-index: 1; }
-.introduction img { width: 100%; }
+.introduction img { width: 85%; max-width: 500px; }
 
 /* ---------- Approach / Operating Model (page 3) ---------- */
 .approach { background: var(--paper); text-align: center; }
 .flow {
   display: flex;
   justify-content: center;
-  align-items: stretch;
-  gap: 18px;
+  align-items: center;
+  gap: 20px;
   flex-wrap: wrap;
   margin: 10px 0 40px;
   position: relative;
   z-index: 1;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .flow-card {
   background: #fff;
   border: 1px solid var(--card-border);
   border-radius: 14px;
-  padding: 34px 26px;
+  padding: 36px 28px;
   min-width: 220px;
+  max-width: 240px;
   box-shadow: 0 10px 24px rgba(11, 32, 54, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 .flow-icon { width: 56px; height: 56px; object-fit: contain; margin: 0 auto 14px; }
-.flow-card h4 { font-family: var(--display); font-weight: 400; color: var(--ink); font-size: 1.15rem; }
-.flow-arrow { display: flex; align-items: center; font-size: 1.4rem; color: #17324a; }
+.flow-card h4 { 
+  font-family: var(--sans); 
+  font-weight: 600; 
+  color: var(--ink); 
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+.flow-arrow { 
+  display: flex; 
+  align-items: center; 
+  font-size: 1.4rem; 
+  color: var(--gold); 
+  flex-shrink: 0;
+}
 .approach .kicker {
   font-weight: 700;
   color: var(--ink);
@@ -261,31 +307,41 @@ nav a:hover, nav a.active { color: var(--gold-2); }
 .why-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  max-width: 960px;
+  gap: 24px;
+  max-width: 780px;
   margin: 0 auto;
 }
 .why-card {
   background: #fff;
   border-radius: 16px;
-  padding: 40px 34px;
+  padding: 32px 28px;
   text-align: center;
   box-shadow: 0 14px 30px rgba(11, 32, 54, 0.08);
   border: 2px solid var(--ink);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .why-card.gold { border-color: var(--gold); }
-.why-icon { width: 58px; height: 58px; object-fit: contain; margin: 0 auto 16px; }
-.why-card h4 { font-family: var(--display); font-weight: 400; color: var(--ink); font-size: 1.25rem; margin-bottom: 10px; }
-.why-card p { color: var(--muted-2); }
+.why-icon { width: 52px; height: 52px; object-fit: contain; margin: 0 auto 14px; }
+.why-card h4 { font-family: var(--sans); font-weight: 600; color: #000; font-size: 1.25rem; margin-bottom: 10px; }
+.why-card p { color: var(--muted-2); font-family: var(--sans); }
 
 /* ---------- Image divider (page 5) ---------- */
 .divider {
-  min-height: 60vh;
+  min-height: 42vh;
+  max-height: 520px;
+  height: 42vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(rgba(11, 27, 43, 0.62), rgba(11, 27, 43, 0.72)),
-    url('/images/services-bg.jpg') center / cover no-repeat;
+  background-image: linear-gradient(rgba(11, 27, 43, 0.65), rgba(11, 27, 43, 0.75)),
+    url('/images/services-bg.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 .divider .wm {
   font-family: var(--display);
@@ -358,7 +414,7 @@ nav a:hover, nav a.active { color: var(--gold-2); }
 .industries-cols { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(6, auto); grid-auto-flow: column; gap: 6px 30px; }
 .industries-cols div { display: flex; align-items: center; gap: 12px; padding: 6px 0; }
 .industries-cols i { color: var(--gold); }
-.industries img { }
+.industries img { width: 85%; max-width: 500px; }
 
 /* ---------- Impact (page 8) ---------- */
 .impact { background: var(--paper); }
@@ -388,7 +444,7 @@ nav a:hover, nav a.active { color: var(--gold-2); }
 .insights { background: var(--paper); }
 .insights-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
 .insight-card { background: #fff; border: 1px solid var(--card-border); border-radius: 14px; padding: 30px 34px; box-shadow: 0 12px 26px rgba(11, 32, 54, 0.06); }
-.insight-card div { display: flex; align-items: center; gap: 14px; padding: 8px 0; color: var(--ink); font-weight: 500; }
+.insight-card div { display: flex; align-items: center; gap: 14px; padding: 8px 0; color: var(--ink); font-weight: 500; font-family: var(--sans); }
 .insight-card i { color: var(--gold); }
 
 /* ---------- About + Ambition/Purpose (page 11) ---------- */
@@ -397,7 +453,7 @@ nav a:hover, nav a.active { color: var(--gold-2); }
 .about-top .sub { font-family: var(--display); color: var(--gold); letter-spacing: 1.2px; text-transform: uppercase; margin: 6px 0 4px; font-size: 1.05rem; }
 .about-top .bbb { font-family: var(--display); font-weight: 400; color: var(--ink); margin-bottom: 18px; }
 .about-top p { color: var(--muted); margin-bottom: 16px; }
-.about-top img { }
+.about-top img { width: 85%; max-width: 500px; }
 .ap-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -435,7 +491,7 @@ nav a:hover, nav a.active { color: var(--gold-2); }
 .founder .title { font-size: clamp(2rem, 3.5vw, 2.7rem); margin-bottom: 22px; }
 .founder p { color: var(--muted); margin-bottom: 18px; }
 .founder p strong { color: var(--ink); }
-.founder img { width: 100%; object-fit: cover; }
+.founder img { width: 85%; max-width: 500px; object-fit: cover; }
 
 /* ---------- Contact (page 13) ---------- */
 .contact {
@@ -484,12 +540,132 @@ nav a:hover, nav a.active { color: var(--gold-2); }
 footer { background: var(--dark-2); color: rgba(255, 255, 255, 0.85); text-align: center; padding: 26px; letter-spacing: 0.5px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
 
 /* ---------- Responsive ---------- */
+
+/* Tablet and below (900px and below) */
 @media (max-width: 900px) {
   nav ul { display: none; }
   .introduction, .industries, .about-top, .ap-grid, .why-grid, .impact-grid,
   .works-grid, .insights-cards, .founder, .contact-grid, .contact-form .row { grid-template-columns: 1fr; }
-  .ap-divider { display: none; }
-  .introduction img, .founder img { order: -1; }
-  .industries img { order: -1; }
+  .introduction img, .founder img { order: -1; max-width: 100%; }
+  .industries img { order: -1; max-width: 100%; }
+  .about-top img { max-width: 100%; }
   section { padding: 64px 6vw; }
+  
+  /* Adjust card sizes for tablets */
+  .why-grid { max-width: 100%; }
+  .services-track { padding: 10px 0 24px; }
+}
+
+/* Mobile landscape and smaller tablets (768px and below) */
+@media (max-width: 768px) {
+  section { padding: 48px 5vw; }
+  .section-head { margin-bottom: 40px; }
+  .section-head .title { font-size: clamp(1.8rem, 5vw, 2.5rem); }
+  
+  /* Hero adjustments */
+  .hero { min-height: 100vh; padding: 110px 5vw 48px; }
+  .hero h1 { font-size: clamp(1.9rem, 6vw, 2.8rem); }
+  .hero .subtitle { font-size: clamp(0.95rem, 3vw, 1.15rem); margin-bottom: 26px; }
+  .hero-btns { justify-content: center; gap: 12px; }
+  .hero-btns .btn {
+    width: auto;
+    max-width: 260px;
+    font-size: 0.88rem;
+    padding: 10px 18px;
+  }
+  
+  /* Card adjustments */
+  .flow { flex-direction: column; gap: 24px; }
+  .flow-arrow { transform: rotate(90deg); }
+  .flow-card { max-width: 100%; width: 100%; }
+  .service-card { flex: 0 0 280px; }
+  .why-grid { gap: 20px; }
+  .why-card { padding: 28px 24px; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .insight-card { padding: 24px 28px; }
+  
+  /* Contact adjustments */
+  .contact { padding: 48px 5vw; }
+  .details-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* Mobile portrait (480px and below) */
+@media (max-width: 480px) {
+  section { padding: 40px 4vw; }
+  .section-head { margin-bottom: 32px; }
+  
+  /* Hero mobile */
+  .hero { min-height: auto; padding: 100px 4vw 40px; }
+  .hero h1 { font-size: clamp(1.65rem, 7vw, 2.2rem); }
+  .hero .pill {
+    font-size: 0.82rem;
+    padding: 8px 14px;
+    margin-top: 12px;
+    max-width: 92%;
+  }
+  .hero .subtitle { font-size: 0.95rem; margin: 16px auto 22px; }
+  .hero-btns {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 420px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-btns .btn {
+    width: auto;
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: none;
+    font-size: 0.8rem;
+    padding: 10px 12px;
+    white-space: nowrap;
+  }
+  
+  /* Navigation mobile */
+  .brand img { height: 40px; }
+  
+  /* Cards mobile */
+  .flow-card { padding: 28px 24px; max-width: 100%; }
+  .service-card { flex: 0 0 260px; padding: 28px 22px; }
+  .why-grid { gap: 16px; max-width: 100%; }
+  .why-card { padding: 24px 20px; }
+  .why-icon { width: 46px; height: 46px; }
+  .impact-card { padding: 24px 20px; }
+  .insight-card { padding: 20px 24px; }
+  
+  /* Text size adjustments */
+  .introduction .title, .about-top .title, .founder .title { 
+    font-size: clamp(1.6rem, 6vw, 2.2rem); 
+  }
+  
+  /* Contact mobile */
+  .details-grid { grid-template-columns: 1fr; gap: 16px; }
+  .detail-item { padding: 12px; }
+  .socials { gap: 14px; }
+  .socials a { width: 40px; height: 40px; }
+  
+  /* Services carousel mobile */
+  .carousel-btn { width: 36px; height: 36px; font-size: 1rem; }
+  .carousel-btn.prev { left: -4px; }
+  .carousel-btn.next { right: -4px; }
+}
+
+/* Very small screens (360px and below) */
+@media (max-width: 360px) {
+  section { padding: 36px 3.5vw; }
+  .hero { padding: 96px 3.5vw 36px; }
+  .hero h1 { font-size: 1.5rem; }
+  .hero-btns {
+    flex-direction: row;
+    max-width: 100%;
+    gap: 8px;
+  }
+  .hero-btns .btn {
+    font-size: 0.72rem;
+    padding: 9px 10px;
+  }
+  .why-card, .flow-card, .impact-card { padding: 20px 16px; }
+  .service-card { flex: 0 0 240px; padding: 24px 18px; }
 }

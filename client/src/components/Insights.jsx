@@ -8,7 +8,7 @@ export default function Insights() {
       <div className="section-head">
         <div className="title">Insights</div>
         <div className="sub">Executive Perspectives</div>
-        <p className="lead">Regular articles from our advisory team covering key sectors:</p>
+        <p className="lead">Regular articles from our advisory team covering</p>
       </div>
       <div className="insights-cards">
         {[COL1, COL2].map((col, idx) => (

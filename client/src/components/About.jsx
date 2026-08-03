@@ -4,20 +4,16 @@ export default function About() {
     <section id="about" className="about">
       <div className="about-top">
         <div>
-          <h2 className="display title" style={{ fontSize: 'clamp(2rem,3.5vw,2.7rem)' }}>About</h2>
-          <p className="sub">Beyond Transactions</p>
+          <h2 className="display title" style={{ fontSize: 'clamp(2rem,3.5vw,2.7rem)' }}>About Jamaa</h2>
           <p className="bbb">Building Better Businesses</p>
           <p>
-            We gather expertise, strategy, technology, and financial insight to solve complex
-            business challenges through one integrated advisory platform.
+            In a rapidly evolving business landscape, staying ahead requires more than experience,
+            it demands intelligent execution.
           </p>
           <p>
-            Rather than offering isolated consulting services, we understand the core business model
-            and build operating models accordingly that improve organizational functionalities.
-          </p>
-          <p>
-            By aligning strategy, finance, governance, and operations, we help clients achieve
-            stronger business performance and sustainable profitability.
+            JAMAA integrates modern AI capabilities across our advisory and transformation services,
+            enabling smarter analysis, faster delivery, and more informed decision-making while keeping
+            strategic thinking firmly human-led.
           </p>
         </div>
         <img src="/images/about.png" alt="Corporate skyscrapers" />
