@@ -1,38 +1,85 @@
-// About (page 11): intro text + skyscraper photo, then Ambition & Purpose.
+import { useEffect, useRef, useState } from 'react'
+
+// About: 2×2 grid — intro | video, ambition | purpose.
 export default function About() {
+  const videoRef = useRef(null)
+  const [playing, setPlaying] = useState(false)
+
+  useEffect(() => {
+    const el = videoRef.current
+    if (!el) return
+    el.muted = true
+    const attempt = el.play()
+    if (attempt !== undefined) {
+      attempt.then(() => setPlaying(true)).catch(() => setPlaying(false))
+    }
+  }, [])
+
+  const toggleVideo = () => {
+    const el = videoRef.current
+    if (!el) return
+    if (el.paused) {
+      void el.play()
+    } else {
+      el.pause()
+    }
+  }
+
   return (
     <section id="about" className="about">
-      <div className="about-top">
-        <div>
-          <h2 className="display title" style={{ fontSize: 'clamp(2rem,3.5vw,2.7rem)' }}>About Jamaa</h2>
-          <p className="bbb">Building Better Businesses</p>
-          <p>
+      <div className="about-layout">
+        <div className="about-intro">
+          <h2 className="display title about-title">About Jamaa</h2>
+          <p className="about-tagline">Building Better Businesses</p>
+          <p className="about-body">
             In a rapidly evolving business landscape, staying ahead requires more than experience,
             it demands intelligent execution.
           </p>
-          <p>
-            JAMAA integrates modern AI capabilities across our advisory and transformation services,
+          <p className="about-body">
+            JAMAA integrates <strong>modern AI capabilities</strong> across our advisory and transformation services,
             enabling smarter analysis, faster delivery, and more informed decision-making while keeping
             strategic thinking firmly human-led.
           </p>
         </div>
-        <img src="/images/about.png" alt="Corporate skyscrapers" />
-      </div>
 
-      <div className="ap-grid">
-        <div className="ap-item">
-          <img className="ap-icon" src="/images/icon-ambition.png" alt="" />
-          <div className="sub">Our Ambition</div>
-          <p>
+        <div className="about-video-wrap">
+          <video
+            ref={videoRef}
+            className="about-video"
+            src="/videos/about-jamaa.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            onClick={toggleVideo}
+            onPlay={() => setPlaying(true)}
+            onPause={() => setPlaying(false)}
+          />
+          <button
+            type="button"
+            className={`about-video-play${playing ? ' is-playing' : ''}`}
+            aria-label={playing ? 'Pause video' : 'Play video'}
+            onClick={(e) => {
+              e.stopPropagation()
+              toggleVideo()
+            }}
+          >
+            <i className={`fa-solid fa-${playing ? 'pause' : 'play'}`} />
+          </button>
+        </div>
+
+        <div className="ap-item about-ambition">
+          <div className="about-subhead">Our Ambition</div>
+          <p className="about-body">
             To create lasting value for our client and become trusted advisor of choice for
             organizations seeking sustainable growth, strategic clarity and transformative results.
           </p>
         </div>
 
-        <div className="ap-item">
-          <img className="ap-icon" src="/images/icon-purpose.png" alt="" />
-          <div className="sub">Our Purpose</div>
-          <p>
+        <div className="ap-item about-purpose">
+          <div className="about-subhead">Our Purpose</div>
+          <p className="about-body">
             We engage organizations to build effective processes that create efficient business
             activity, stronger governance, and sustainable profitability through practical
             implementation plan.
