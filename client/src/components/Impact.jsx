@@ -8,17 +8,16 @@ const CARDS = [
 
 export default function Impact() {
   return (
-    <section className="impact">
-      <span className="watermark" style={{ right: '-5vw', top: '18%' }}>J</span>
-      <div className="section-head">
-        <div className="title">Our Impact</div>
-        <div className="sub">Creating Measurable Business Outcomes</div>
+    <section id="impact" className="impact">
+      <div className="section-head impact-head">
+        <h2 className="title">Our Impact</h2>
+        <p className="sub">Creating Measurable Business Outcomes</p>
       </div>
       <div className="impact-grid">
         {CARDS.map(([title, text, variant]) => (
-          <div className={`impact-card ${variant === 'navy' ? 'navy' : ''}`} key={title}>
-            <h4>{title}</h4>
-            <p>{text}</p>
+          <div className={`impact-card ${variant === 'navy' ? 'navy' : 'gold'}`} key={title}>
+            <h3 className="impact-card-title">{title}</h3>
+            <p className="impact-card-text">{text}</p>
           </div>
         ))}
       </div>

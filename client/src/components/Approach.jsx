@@ -7,10 +7,9 @@ const STEPS = [
 
 export default function Approach() {
   return (
-    <section className="approach">
-      <span className="watermark" style={{ left: '-4vw', top: '20%' }}>J</span>
+    <section id="operating-model" className="approach">
       <div className="section-head">
-        <div className="title">Our Approach</div>
+        <h2 className="title">Our Approach</h2>
         <div className="sub">The JAMAA Operating Model</div>
       </div>
 

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-// About: 2×2 grid — intro | video, ambition | purpose.
+// About: intro + visual, ambition & purpose below.
 export default function About() {
   const videoRef = useRef(null)
   const [playing, setPlaying] = useState(false)
@@ -29,16 +29,13 @@ export default function About() {
     <section id="about" className="about">
       <div className="about-layout">
         <div className="about-intro">
-          <h2 className="display title about-title">About Jamaa</h2>
+          <h2 className="display title about-title">About JAMAA</h2>
           <p className="about-tagline">Building Better Businesses</p>
           <p className="about-body">
             In a rapidly evolving business landscape, staying ahead requires more than experience,
-            it demands intelligent execution.
-          </p>
-          <p className="about-body">
-            JAMAA integrates <strong>modern AI capabilities</strong> across our advisory and transformation services,
-            enabling smarter analysis, faster delivery, and more informed decision-making while keeping
-            strategic thinking firmly human-led.
+            it demands intelligent execution. JAMAA integrates <strong>modern AI capabilities</strong>{' '}
+            across our advisory and transformation services, enabling smarter analysis, faster delivery,
+            and more informed decision-making while keeping strategic thinking firmly human-led.
           </p>
         </div>
 

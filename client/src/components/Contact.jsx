@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-// Contact (page 13): dark section with details + brand/socials, plus a
+// Contact (page 13): dark section with details + brand, plus a
 // functional message form wired to the Express backend (/api/contact).
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
@@ -62,12 +62,6 @@ export default function Contact() {
 
         <div className="contact-brand">
           <img src="/images/logo.png" alt="JAMAA — Building Better Business" />
-          <div className="socials">
-            <a href="#" aria-label="Instagram"><img src="/images/icon-instagram.png" alt="" /></a>
-            <a href="#" aria-label="Facebook"><img src="/images/icon-facebook.png" alt="" /></a>
-            <a href="#" aria-label="LinkedIn"><img src="/images/icon-linkedin.png" alt="" /></a>
-            <a href="#" aria-label="Twitter"><img src="/images/icon-twitter.png" alt="" /></a>
-          </div>
         </div>
 
         <form className="contact-form" onSubmit={onSubmit}>

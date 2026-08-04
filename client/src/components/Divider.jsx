@@ -1,8 +1,4 @@
-// Full-width image divider (page 5): boardroom photo with JAMAA watermark.
+// Full-width image divider (page 5): boardroom photo.
 export default function Divider() {
-  return (
-    <section className="divider">
-      <span className="wm">JAMAA</span>
-    </section>
-  )
+  return <section className="divider" aria-hidden="true" />
 }
