@@ -1,20 +1,35 @@
-// Insights: alternating blog rows (Z-layout) with Read More CTAs.
+// Insights: 3-column grid of image + title-link cards.
 const POSTS = [
   {
-    label: 'Blog 1',
-    title: 'The CFO as an Architect of Enterprise Value',
-    excerpt:
-      'In today\u2019s environment, the CFO is no longer just a guardian of financial integrity. The role has evolved into that of a strategic architect\u2014someone who designs the systems, controls, and decision frameworks that enable an organisation to create, protect, and sustain enterprise value.',
-    image: '/images/insight-1.png',
-    reverse: false,
+    title: 'The Cost of Complexity: Why Regional Expansion Is Exposing Weak Operating Models',
+    image: '/images/insight-2.png',
+    href: '#',
   },
   {
-    label: 'Blog 2',
-    title: 'The Cost of Complexity: Why Regional Expansion Is Exposing Weak Operating Models',
-    excerpt:
-      'As organisations expand across regions, complexity often grows faster than capability. What begins as a growth strategy can quickly become an operational burden\u2014fragmented processes, inconsistent controls, and decision-making that lacks clarity and speed.',
-    image: '/images/insight-2.png',
-    reverse: true,
+    title: 'The CFO as an Architect of Enterprise Value',
+    image: '/images/insight-1.png',
+    href: '#',
+  },
+  {
+    title: 'How CFOs Drive Organizational Success',
+    image: '/images/insight-3.png',
+    href: '#',
+  },
+  {
+    title: 'Water Infrastructure Upgrade: A Strategic Priority for Nations',
+    image: '/images/insight-4.png',
+    href: '#',
+  },
+  {
+    title: 'Weatherford went Bankrupt in 2019 They Came Back. How?',
+    image: '/images/insight-5.png',
+    href: '#',
+  },
+  {
+    title: 'Inflexion Showcases AI Innovation at SAP Connect Day UAE 2026',
+    image: '/images/insight-6.png',
+    href: '#',
+    cropFocus: true,
   },
 ]
 
@@ -22,25 +37,21 @@ export default function Insights() {
   return (
     <section id="insights" className="insights">
       <div className="insights-inner">
-        <h2 className="insights-heading">Our Insights</h2>
+        <h2 className="insights-heading">OUR INSIGHTS</h2>
 
-        <div className="insights-list">
+        <div className="insights-grid">
           {POSTS.map((post) => (
-            <article
-              key={post.label}
-              className={`insight-row${post.reverse ? ' reverse' : ''}`}
-            >
-              <div className="insight-text">
-                <p className="insight-label">{post.label}</p>
-                <h3 className="insight-title">{post.title}</h3>
-                <p className="insight-excerpt">{post.excerpt}</p>
-                <a href="#contact" className="btn btn-gold insight-cta">
-                  Read More
-                </a>
-              </div>
+            <article key={post.title} className="insight-card">
               <div className="insight-media">
-                <img src={post.image} alt="" />
+                <img
+                  src={post.image}
+                  alt=""
+                  className={post.cropFocus ? 'insight-img-focus' : undefined}
+                />
               </div>
+              <a href={post.href} className="insight-title">
+                {post.title}
+              </a>
             </article>
           ))}
         </div>

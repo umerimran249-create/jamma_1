@@ -24,7 +24,6 @@ export default function Industries() {
           We understand the operational and financial challenges facing capital-intensive and highly
           regulated industries.
         </p>
-        <p className="serve">Industries We Serve</p>
         <div className="industries-cols">
           <ul className="industries-col">
             {COL1.map((item) => (

@@ -11,26 +11,46 @@ export default function Founder() {
       <p className="founder-name">Rehan Laiq</p>
       <p className="founder-role">Founder of JAMAA</p>
       <p>
-        <strong>Rehan Laiq</strong> is a globally experienced finance and transformation executive with
-        over <strong>30 years</strong> of leadership across infrastructure, utilities, energy, and
-        industrial sectors. As the Founder of JAMAA, he leverages a distinguished career of shaping
-        financial strategies, strengthening governance frameworks, and driving sustainable, high-value
-        growth for complex international portfolios.
+        <strong>Rehan Laiq</strong> is a C-level finance and business executive with more than{' '}
+        <strong>38 years</strong> of leadership across{' '}
+        <strong>infrastructure, utilities, energy, and industrial sectors</strong>. He has held global
+        and group-level CFO roles in three very different organisational contexts—a multinational
+        oilfield services business, a large diversified industrial group, and an international
+        infrastructure investor and operator—and has led finance through growth, restructuring, and
+        transformation in each.
       </p>
       <p>
-        His deep expertise spans water and wastewater, power and renewables, oil and gas, and large-scale
-        infrastructure, encompassing project finance, capital structuring, mergers and acquisitions, and
-        enterprise risk management.
+        His core work is making capital-intensive businesses financeable and well-run. That spans project
+        finance and capital structuring, mergers and acquisitions, enterprise risk management, cost
+        optimisation, and the design of finance functions capable of operating across multiple
+        jurisdictions and reporting regimes.
       </p>
       <p>
-        A Fellow Chartered Accountant and alumnus of the Advanced Financial Management Program at the
-        Wharton School, <strong>Rehan</strong> has spearheaded finance transformation agendas across{' '}
-        <strong>Southeast Asia, the Middle East, Eastern Europe, Central Asia, and Africa.</strong>{' '}
-        Throughout his career—including senior roles such as{' '}
-        <strong>Group CFO of Fauji Foundation and Global CFO at SLB in Houston</strong>—he has successfully
-        managed funding programs exceeding <strong>US$500 million</strong>, implemented advanced enterprise
-        technologies like <strong>SAP S/4HANA</strong>, and consistently delivered attractive risk-adjusted
-        returns for global stakeholders.
+        He is currently Chief Financial Officer of Metito Utilities Limited, responsible for financial
+        strategy and governance across a portfolio of water, wastewater, power, renewables, and
+        infrastructure assets. Since 2020 he has led the group&apos;s{' '}
+        <strong>finance transformation agenda</strong>, structured competitive project bids, and supported
+        investment decisions across{' '}
+        <strong>
+          Southeast Asia, the Middle East, Eastern Europe, Central Asia, and Africa
+        </strong>
+        —markets where infrastructure capital is hardest to mobilise.
+      </p>
+      <p>
+        Previously he was <strong>Group Chief Financial Officer of Fauji Foundation</strong>, and{' '}
+        <strong>
+          Global Chief Financial Officer of the Seismic business at SLB (formerly Schlumberger) in Houston,
+          USA
+        </strong>
+        . He led large-scale transformation programmes, delivered cost optimisation initiatives, executed
+        complex M&amp;A transactions, and strengthened profitability across multinational operations.
+      </p>
+      <p>
+        He is an advocate of data-driven decision-making and has led enterprise finance technology
+        implementation, including <strong>SAP S/4HANA</strong>. He has extensive experience working with
+        shareholders, boards of directors, lenders, and investment partners across the Middle East, Asia,
+        Africa, Europe, and North America. Rehan is a Fellow Chartered Accountant and an alumnus of the
+        Advanced Financial Management Program at the Wharton School.
       </p>
     </section>
   )
