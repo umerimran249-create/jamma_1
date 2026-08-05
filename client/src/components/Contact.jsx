@@ -61,7 +61,7 @@ export default function Contact() {
         </div>
 
         <div className="contact-brand">
-          <img src="/images/logo.png" alt="JAMAA — Building Better Business" />
+          <img src="/images/logo.png" alt="JAMAA — Beyond Transactions." />
         </div>
 
         <form className="contact-form" onSubmit={onSubmit}>
@@ -72,7 +72,7 @@ export default function Contact() {
           </div>
           <textarea rows="4" name="message" placeholder="Your Message" required value={form.message} onChange={update} />
           <button type="submit" className="btn btn-gold" disabled={submitting}>
-            {submitting ? 'Sending...' : 'Submit Inquiry'}
+            {submitting ? 'Sending...' : 'Submit'}
           </button>
           {status && <p className={`form-status ${status.type}`}>{status.text}</p>}
         </form>

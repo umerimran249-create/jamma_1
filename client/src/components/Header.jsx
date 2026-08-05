@@ -1,4 +1,10 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+
+const OVERVIEW_LINKS = [
+  ['Introduction', '#introduction'],
+  ['Our Approach', '#operating-model'],
+]
 
 const WORK_LINKS = [
   ['Services', '#services'],
@@ -7,11 +13,15 @@ const WORK_LINKS = [
   ['Impact', '#impact'],
 ]
 
-const INSIGHTS_LINKS = [['Blog', '#insights']]
+const INSIGHTS_LINKS = [['Blog', '/insights']]
+
+function navTo(href) {
+  if (href.startsWith('#')) return `/${href}`
+  return href
+}
 
 function NavDropdown({ label, links, onNavigate }) {
   const [open, setOpen] = useState(false)
-
   const toggle = () => setOpen((prev) => !prev)
   const close = () => setOpen(false)
 
@@ -34,15 +44,15 @@ function NavDropdown({ label, links, onNavigate }) {
       <ul className="nav-dropdown">
         {links.map(([itemLabel, href]) => (
           <li key={href}>
-            <a
-              href={href}
+            <Link
+              to={navTo(href)}
               onClick={() => {
                 close()
                 onNavigate?.()
               }}
             >
               {itemLabel}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
@@ -63,17 +73,17 @@ export default function Header() {
 
   useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth > 900) setMenuOpen(false)
+      if (window.innerWidth > 1280) setMenuOpen(false)
     }
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
   }, [])
 
   return (
-    <header className={menuOpen ? 'is-menu-open' : ''}>
-      <a className="brand" href="#home" onClick={closeMenu}>
+    <header className={`site-header${menuOpen ? ' is-menu-open' : ''}`}>
+      <Link className="brand" to="/#home" onClick={closeMenu}>
         <img src="/images/logo.png" alt="JAMAA — Beyond Transactions." />
-      </a>
+      </Link>
 
       <button
         type="button"
@@ -90,11 +100,7 @@ export default function Header() {
 
       <nav id="primary-nav" className={menuOpen ? 'is-open' : ''} aria-label="Primary">
         <ul className="nav-main">
-          <li>
-            <a href="#home" onClick={closeMenu}>
-              Overview
-            </a>
-          </li>
+          <NavDropdown label="Overview" links={OVERVIEW_LINKS} onNavigate={closeMenu} />
           <NavDropdown label="Our Work" links={WORK_LINKS} onNavigate={closeMenu} />
           <NavDropdown label="Our Insights" links={INSIGHTS_LINKS} onNavigate={closeMenu} />
         </ul>

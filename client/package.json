@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "fix:intro": "node scripts/fix-intro-image.mjs"
+    "fix:intro": "node scripts/fix-intro-image.mjs",
+    "fix:blog-photos": "node scripts/fix-blog-photos.mjs"
   },
   "dependencies": {
     "jamma": "file:..",

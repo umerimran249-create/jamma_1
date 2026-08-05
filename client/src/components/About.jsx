@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-// About: intro + visual, ambition & purpose below.
+// About: intro + visual, ambition & purpose below — all left-aligned.
 export default function About() {
   const videoRef = useRef(null)
   const [playing, setPlaying] = useState(false)
@@ -28,59 +28,63 @@ export default function About() {
   return (
     <section id="about" className="about">
       <div className="about-layout">
-        <div className="about-intro">
-          <h2 className="display title about-title">About JAMAA</h2>
-          <p className="about-tagline">Building Better Businesses</p>
-          <p className="about-body">
-            In a rapidly evolving business landscape, staying ahead requires more than experience,
-            it demands intelligent execution. JAMAA integrates <strong>modern AI capabilities</strong>{' '}
-            across our advisory and transformation services, enabling smarter analysis, faster delivery,
-            and more informed decision-making while keeping strategic thinking firmly human-led.
-          </p>
+        <div className="about-top">
+          <div className="about-intro">
+            <h2 className="display title about-title">About JAMAA</h2>
+            <p className="about-tagline">Building Better Businesses</p>
+            <p className="about-body">
+              In a rapidly evolving business landscape, staying ahead requires more than experience,
+              it demands intelligent execution. JAMAA integrates <strong>modern AI capabilities</strong>{' '}
+              across our advisory and transformation services, enabling smarter analysis, faster delivery,
+              and more informed decision-making while keeping strategic thinking firmly human-led.
+            </p>
+          </div>
+
+          <div className="about-video-wrap">
+            <video
+              ref={videoRef}
+              className="about-video"
+              src="/videos/about-jamaa.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              onClick={toggleVideo}
+              onPlay={() => setPlaying(true)}
+              onPause={() => setPlaying(false)}
+            />
+            <button
+              type="button"
+              className={`about-video-play${playing ? ' is-playing' : ''}`}
+              aria-label={playing ? 'Pause video' : 'Play video'}
+              onClick={(e) => {
+                e.stopPropagation()
+                toggleVideo()
+              }}
+            >
+              <i className={`fa-solid fa-${playing ? 'pause' : 'play'}`} />
+            </button>
+          </div>
         </div>
 
-        <div className="about-video-wrap">
-          <video
-            ref={videoRef}
-            className="about-video"
-            src="/videos/about-jamaa.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            onClick={toggleVideo}
-            onPlay={() => setPlaying(true)}
-            onPause={() => setPlaying(false)}
-          />
-          <button
-            type="button"
-            className={`about-video-play${playing ? ' is-playing' : ''}`}
-            aria-label={playing ? 'Pause video' : 'Play video'}
-            onClick={(e) => {
-              e.stopPropagation()
-              toggleVideo()
-            }}
-          >
-            <i className={`fa-solid fa-${playing ? 'pause' : 'play'}`} />
-          </button>
-        </div>
+        <div className="about-bottom">
+          <div className="about-ambition">
+            <h3 className="about-subhead">Our Ambition</h3>
+            <p className="about-body">
+              To create lasting value for our client and become trusted advisor of choice for
+              organizations seeking sustainable growth, strategic clarity and transformative results.
+            </p>
+          </div>
 
-        <div className="ap-item about-ambition">
-          <div className="about-subhead">Our Ambition</div>
-          <p className="about-body">
-            To create lasting value for our client and become trusted advisor of choice for
-            organizations seeking sustainable growth, strategic clarity and transformative results.
-          </p>
-        </div>
-
-        <div className="ap-item about-purpose">
-          <div className="about-subhead">Our Purpose</div>
-          <p className="about-body">
-            We engage organizations to build effective processes that create efficient business
-            activity, stronger governance, and sustainable profitability through practical
-            implementation plan.
-          </p>
+          <div className="about-purpose">
+            <h3 className="about-subhead">Our Purpose</h3>
+            <p className="about-body">
+              We engage organizations to build effective processes that create efficient business
+              activity, stronger governance, and sustainable profitability through practical
+              implementation plan.
+            </p>
+          </div>
         </div>
       </div>
     </section>

@@ -1,7 +1,7 @@
-// Introduction: Crushed title/sub, Montserrat body, photo right.
+// Introduction: title/sub + both paragraphs left, photo right (matches Canva).
 export default function Introduction() {
   return (
-    <section className="introduction">
+    <section id="introduction" className="introduction">
       <div className="intro-top">
         <div className="intro-leading">
           <h2 className="title">Introduction</h2>
@@ -13,6 +13,13 @@ export default function Introduction() {
             health, optimizing operations, and building resilient business models for long-term
             growth.
           </p>
+          <p>
+            By bringing together expertise across corporate finance, enterprise technology, responsible
+            AI integration, marketing strategy, and corporate communications, we deliver practical,
+            data-driven outcomes. From multinational corporations to private enterprises, we serve as
+            trusted advisors—helping leaders solve today&rsquo;s challenges while building capabilities
+            that endure.
+          </p>
         </div>
         <img
           className="intro-photo"
@@ -20,13 +27,6 @@ export default function Introduction() {
           alt="JAMAA advisory team in a working session"
         />
       </div>
-      <p className="intro-foot">
-        By bringing together expertise across corporate finance, enterprise technology, responsible
-        AI integration, marketing strategy, and corporate communications, we deliver practical,
-        data-driven outcomes. From multinational corporations to private enterprises, we serve as
-        trusted advisors—helping leaders solve today&rsquo;s challenges while building capabilities
-        that endure.
-      </p>
     </section>
   )
 }

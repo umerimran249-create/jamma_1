@@ -4,53 +4,39 @@ export default function Founder() {
     <section className="founder">
       <img
         className="founder-photo"
-        src="/images/founder.png"
-        alt="Rehan Laiq, Founder of JAMAA"
+        src="/images/founder.jpeg"
+        alt="Rehan Laiq, Founder and CEO"
       />
       <h2 className="title">Founder Info</h2>
       <p className="founder-name">Rehan Laiq</p>
-      <p className="founder-role">Founder of JAMAA</p>
+      <p className="founder-role">Founder and CEO</p>
       <p>
-        <strong>Rehan Laiq</strong> is a C-level finance and business executive with more than{' '}
-        <strong>38 years</strong> of leadership across{' '}
-        <strong>infrastructure, utilities, energy, and industrial sectors</strong>. He has held global
-        and group-level CFO roles in three very different organisational contexts—a multinational
-        oilfield services business, a large diversified industrial group, and an international
-        infrastructure investor and operator—and has led finance through growth, restructuring, and
-        transformation in each.
+        Rehan Laiq is the Founder and Chief Executive Officer of JAMAA Global Advisory, bringing more
+        than 38 years of international leadership in finance, business transformation, and corporate
+        strategy. Throughout his career, he has advised organizations on complex financial, operational,
+        and strategic challenges, helping leadership teams strengthen performance, improve governance,
+        and create long-term enterprise value.
       </p>
       <p>
-        His core work is making capital-intensive businesses financeable and well-run. That spans project
-        finance and capital structuring, mergers and acquisitions, enterprise risk management, cost
-        optimisation, and the design of finance functions capable of operating across multiple
-        jurisdictions and reporting regimes.
+        His experience spans infrastructure, utilities, energy, manufacturing, and industrial sectors,
+        where he has held global and group-level executive leadership positions with organizations
+        including Metito Utilities, SLB (formerly Schlumberger), and Fauji Foundation. He has led
+        large-scale transformation initiatives, project financing, mergers and acquisitions, enterprise
+        risk management, finance transformation, and operational optimization across the Middle East,
+        Asia, Africa, Europe, and North America.
       </p>
       <p>
-        He is currently Chief Financial Officer of Metito Utilities Limited, responsible for financial
-        strategy and governance across a portfolio of water, wastewater, power, renewables, and
-        infrastructure assets. Since 2020 he has led the group&apos;s{' '}
-        <strong>finance transformation agenda</strong>, structured competitive project bids, and supported
-        investment decisions across{' '}
-        <strong>
-          Southeast Asia, the Middle East, Eastern Europe, Central Asia, and Africa
-        </strong>
-        —markets where infrastructure capital is hardest to mobilise.
+        At JAMAA, Rehan leads the firm&apos;s strategic vision, advising boards, investors, and executive
+        leadership teams on improving financial performance, building resilient operating models, and
+        navigating growth in an increasingly complex business environment. His approach combines
+        commercial insight, disciplined execution, and responsible technology adoption to help
+        organizations make better decisions, unlock sustainable growth, and deliver measurable business
+        outcomes.
       </p>
       <p>
-        Previously he was <strong>Group Chief Financial Officer of Fauji Foundation</strong>, and{' '}
-        <strong>
-          Global Chief Financial Officer of the Seismic business at SLB (formerly Schlumberger) in Houston,
-          USA
-        </strong>
-        . He led large-scale transformation programmes, delivered cost optimisation initiatives, executed
-        complex M&amp;A transactions, and strengthened profitability across multinational operations.
-      </p>
-      <p>
-        He is an advocate of data-driven decision-making and has led enterprise finance technology
-        implementation, including <strong>SAP S/4HANA</strong>. He has extensive experience working with
-        shareholders, boards of directors, lenders, and investment partners across the Middle East, Asia,
-        Africa, Europe, and North America. Rehan is a Fellow Chartered Accountant and an alumnus of the
-        Advanced Financial Management Program at the Wharton School.
+        A Fellow Chartered Accountant and alumnus of the Advanced Financial Management Program at the
+        Wharton School, Rehan is recognized for combining strategic thinking with practical execution,
+        enabling organizations to transform with confidence and create lasting value.
       </p>
     </section>
   )
