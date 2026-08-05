@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const OVERVIEW_LINKS = [
   ['Introduction', '#introduction'],
@@ -15,21 +15,61 @@ const WORK_LINKS = [
 
 const INSIGHTS_LINKS = [['Blog', '/insights']]
 
-function navTo(href) {
-  if (href.startsWith('#')) return `/${href}`
-  return href
+function canHover() {
+  return typeof window !== 'undefined'
+    && window.matchMedia('(hover: hover) and (pointer: fine)').matches
+}
+
+function scrollToHash(hash) {
+  if (!hash || hash === '#') return false
+  const id = hash.replace(/^#/, '')
+  const el = document.getElementById(id)
+  if (!el) return false
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  return true
 }
 
 function NavDropdown({ label, links, onNavigate }) {
   const [open, setOpen] = useState(false)
-  const toggle = () => setOpen((prev) => !prev)
+  const navigate = useNavigate()
+  const location = useLocation()
+
   const close = () => setOpen(false)
+  const toggle = () => setOpen((prev) => !prev)
+
+  const goTo = (href) => {
+    close()
+    onNavigate?.()
+
+    if (href.startsWith('#')) {
+      const target = `/${href}`
+      if (location.pathname !== '/') {
+        navigate(target)
+        window.setTimeout(() => scrollToHash(href), 80)
+      } else {
+        navigate(target, { replace: true })
+        // Allow route/hash update, then scroll (also works when already on /)
+        window.requestAnimationFrame(() => {
+          if (!scrollToHash(href)) {
+            window.setTimeout(() => scrollToHash(href), 80)
+          }
+        })
+      }
+      return
+    }
+
+    navigate(href)
+  }
 
   return (
     <li
       className={`nav-has-dropdown${open ? ' is-open' : ''}`}
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={() => {
+        if (canHover()) setOpen(true)
+      }}
+      onMouseLeave={() => {
+        if (canHover()) setOpen(false)
+      }}
     >
       <button
         type="button"
@@ -43,16 +83,16 @@ function NavDropdown({ label, links, onNavigate }) {
       </button>
       <ul className="nav-dropdown">
         {links.map(([itemLabel, href]) => (
-          <li key={href}>
-            <Link
-              to={navTo(href)}
-              onClick={() => {
-                close()
-                onNavigate?.()
+          <li key={`${itemLabel}-${href}`}>
+            <a
+              href={href.startsWith('#') ? `/${href}` : href}
+              onClick={(e) => {
+                e.preventDefault()
+                goTo(href)
               }}
             >
               {itemLabel}
-            </Link>
+            </a>
           </li>
         ))}
       </ul>
@@ -62,6 +102,8 @@ function NavDropdown({ label, links, onNavigate }) {
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
 
   const closeMenu = () => setMenuOpen(false)
   const toggleMenu = () => setMenuOpen((prev) => !prev)
@@ -79,9 +121,32 @@ export default function Header() {
     return () => window.removeEventListener('resize', onResize)
   }, [])
 
+  // Scroll when landing on /#section (direct load, back/forward, or in-app nav)
+  useEffect(() => {
+    if (location.pathname !== '/') return
+    if (!location.hash) return
+    const tryScroll = () => scrollToHash(location.hash)
+    if (!tryScroll()) {
+      const t = window.setTimeout(tryScroll, 120)
+      return () => window.clearTimeout(t)
+    }
+  }, [location.pathname, location.hash])
+
+  const goHome = (e) => {
+    e.preventDefault()
+    closeMenu()
+    if (location.pathname !== '/') {
+      navigate('/#home')
+      window.setTimeout(() => scrollToHash('#home'), 80)
+    } else {
+      navigate('/#home', { replace: true })
+      scrollToHash('#home')
+    }
+  }
+
   return (
     <header className={`site-header${menuOpen ? ' is-menu-open' : ''}`}>
-      <Link className="brand" to="/#home" onClick={closeMenu}>
+      <Link className="brand" to="/#home" onClick={goHome}>
         <img src="/images/logo.png" alt="JAMAA — Beyond Transactions." />
       </Link>
 
