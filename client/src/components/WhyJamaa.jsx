@@ -40,7 +40,7 @@ export default function WhyJamaa() {
   }
 
   return (
-    <section className="why-jamaa">
+    <section id="approach" className="why-jamaa">
       <div className="section-head">
         <div className="title">OUR APPROACH</div>
       </div>

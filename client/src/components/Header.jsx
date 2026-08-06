@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 const OVERVIEW_LINKS = [
   ['Introduction', '#introduction'],
   ['About Us', '#about'],
-  ['Our Approach', '#operating-model'],
+  ['Our Approach', '#approach'],
   ['Meet The Team', '#team'],
 ]
 
