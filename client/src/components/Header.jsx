@@ -115,7 +115,7 @@ export default function Header() {
 
   useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth > 1280) setMenuOpen(false)
+      if (window.innerWidth > 500) setMenuOpen(false)
     }
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
@@ -132,22 +132,24 @@ export default function Header() {
     }
   }, [location.pathname, location.hash])
 
-  const goHome = (e) => {
+  const goToHash = (e, hash) => {
     e.preventDefault()
     closeMenu()
     if (location.pathname !== '/') {
-      navigate('/#home')
-      window.setTimeout(() => scrollToHash('#home'), 80)
+      navigate('/' + hash)
+      window.setTimeout(() => scrollToHash(hash), 80)
     } else {
-      navigate('/#home', { replace: true })
-      scrollToHash('#home')
+      navigate('/' + hash, { replace: true })
+      scrollToHash(hash)
     }
   }
+
+  const goHome = (e) => goToHash(e, '#home')
 
   return (
     <header className={`site-header${menuOpen ? ' is-menu-open' : ''}`}>
       <Link className="brand" to="/#home" onClick={goHome}>
-        <img src="/images/logo.png" alt="JAMAA — Beyond Transactions." />
+        <img src="/photos/Jamaa Logo.png" alt="JAMAA — Beyond Transactions." />
       </Link>
 
       <button
@@ -165,9 +167,10 @@ export default function Header() {
 
       <nav id="primary-nav" className={menuOpen ? 'is-open' : ''} aria-label="Primary">
         <ul className="nav-main">
-          <NavDropdown label="Overview" links={OVERVIEW_LINKS} onNavigate={closeMenu} />
-          <NavDropdown label="Our Work" links={WORK_LINKS} onNavigate={closeMenu} />
-          <NavDropdown label="Our Insights" links={INSIGHTS_LINKS} onNavigate={closeMenu} />
+          <li><a href="#introduction" onClick={(e) => goToHash(e, '#introduction')}>Introduction</a></li>
+          <li><a href="#about" onClick={(e) => goToHash(e, '#about')}>About Us</a></li>
+          <li><a href="#operating-model" onClick={(e) => goToHash(e, '#operating-model')}>Our Approach</a></li>
+          <li><a href="#team" onClick={(e) => goToHash(e, '#team')}>Meet the Team</a></li>
         </ul>
       </nav>
     </header>

@@ -43,11 +43,23 @@ export default function Industries() {
           </ul>
         </div>
       </div>
-      <img
-        className="industries-photo"
-        src="/images/industries.png"
-        alt="Advisory consultation with clients"
-      />
+      <div className="industries-photos">
+        <img
+          className="industries-img industries-img-1"
+          src="/photos/pic 3.png"
+          alt="Construction and infrastructure"
+        />
+        <img
+          className="industries-img industries-img-2"
+          src="/photos/pic 2.png"
+          alt="Oil and gas platform"
+        />
+        <img
+          className="industries-img industries-img-3"
+          src="/photos/pic 1.png"
+          alt="Coastal city waterfront"
+        />
+      </div>
     </section>
   )
 }

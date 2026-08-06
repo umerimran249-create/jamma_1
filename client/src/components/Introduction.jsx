@@ -7,25 +7,33 @@ export default function Introduction() {
           <h2 className="title">Introduction</h2>
           <p className="sub">Strategic Advisory Built for Performance.</p>
           <p>
-            <strong>JAMAA</strong> is a global strategic advisory firm helping leaders navigate
-            complexity and drive lasting performance through business transformation, strategy, and
-            execution. We advise organizations on their most critical decisions—improving financial
-            health, optimizing operations, and building resilient business models for long-term
-            growth.
+            <strong>JAMAA</strong> global strategic advisory firm that
+            helps organizations navigate complexity,
+            unlock enterprise value, and achieve
+            sustainable growth. We partner with executive
+            leadership to solve critical business challenges
+            through strategy, transformation, and
+            disciplined execution, enabling stronger
+            financial performance, operational excellence,
+            and resilient business models.
           </p>
           <p>
-            By bringing together expertise across corporate finance, enterprise technology, responsible
-            AI integration, marketing strategy, and corporate communications, we deliver practical,
-            data-driven outcomes. From multinational corporations to private enterprises, we serve as
-            trusted advisors—helping leaders solve today&rsquo;s challenges while building capabilities
-            that endure.
+            Combining expertise across corporate finance, enterprise technology, responsible
+            AI integration, operational transformation, marketing strategy, and corporate
+            communications, we deliver solutions grounded in insight, data, and measurable
+            outcomes. From multinational corporations to privately held enterprises, we work
+            alongside leadership teams as trusted advisors, helping them make confident
+            decisions, accelerate transformation, and build organizations equipped for long-term
+            success in an evolving global economy.
           </p>
         </div>
-        <img
-          className="intro-photo"
-          src="/images/intro.png"
-          alt="JAMAA advisory team in a working session"
-        />
+        <div className="intro-photo-wrapper">
+          <img
+            className="intro-photo"
+            src="/images/intro.png"
+            alt="JAMAA advisory team in a working session"
+          />
+        </div>
       </div>
     </section>
   )

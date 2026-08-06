@@ -3,7 +3,7 @@ export default function Hero() {
   return (
     <section id="home" className="hero">
       <div className="hero-inner">
-        <span className="pill">Building Better Businesses.</span>
+        <span className="pill">Beyond Transactions</span>
         <h1>
           Optimizing Business.
           <br />
@@ -15,7 +15,7 @@ export default function Hero() {
           strategic advisory designed for long-term business success.
         </p>
         <div className="hero-btns">
-          <a href="#services" className="btn btn-gold">Explore Our Services</a>
+          <a href="#contact" className="btn btn-gold">Talk to an Advisor</a>
         </div>
       </div>
     </section>

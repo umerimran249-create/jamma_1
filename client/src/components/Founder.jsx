@@ -1,12 +1,14 @@
 // Founder: text wraps around portrait (top-right), then full width below.
 export default function Founder() {
   return (
-    <section className="founder">
-      <img
-        className="founder-photo"
-        src="/images/founder.jpeg"
-        alt="Rehan Laiq, Founder and CEO"
-      />
+    <section id="team" className="founder">
+      <div className="founder-photo-wrap">
+        <img
+          className="founder-photo-img"
+          src="/photos/Founder image.png"
+          alt="Rehan Laiq, Founder and CEO"
+        />
+      </div>
       <h2 className="title">Founder Info</h2>
       <p className="founder-name">Rehan Laiq</p>
       <p className="founder-role">Founder and CEO</p>

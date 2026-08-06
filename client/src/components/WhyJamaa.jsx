@@ -42,7 +42,7 @@ export default function WhyJamaa() {
   return (
     <section className="why-jamaa">
       <div className="section-head">
-        <div className="title">Why JAMAA?</div>
+        <div className="title">OUR APPROACH</div>
       </div>
 
       <div className="why-flip-grid">
