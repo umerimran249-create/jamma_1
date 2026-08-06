@@ -4,7 +4,7 @@ import { useState } from 'react'
 const CARDS = [
   {
     title: 'Thinking Together',
-    text: 'we listen, strategize and bring valuable ideas together.',
+    text: 'We listen, strategize and bring valuable ideas together.',
     icon: '/images/icon-thinking.png',
     image: '/images/why-1.png',
     variant: 'navy',
