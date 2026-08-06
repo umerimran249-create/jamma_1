@@ -9,8 +9,7 @@ export default function Approach() {
   return (
     <section id="operating-model" className="approach">
       <div className="section-head">
-        <h2 className="title">Our Approach</h2>
-        <div className="sub">The JAMAA Operating Model</div>
+        <h2 className="title">Our Operating Model</h2>
       </div>
 
       <div className="flow">

@@ -3,12 +3,14 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const OVERVIEW_LINKS = [
   ['Introduction', '#introduction'],
+  ['About Us', '#about'],
   ['Our Approach', '#operating-model'],
+  ['Meet The Team', '#team'],
 ]
 
 const WORK_LINKS = [
-  ['Services', '#services'],
-  ['Operating Model', '#operating-model'],
+  ['Our Services', '#services'],
+  ['Our Operating Model', '#operating-model'],
   ['Industries', '#industries'],
   ['Impact', '#impact'],
 ]
@@ -45,13 +47,12 @@ function NavDropdown({ label, links, onNavigate }) {
       const target = `/${href}`
       if (location.pathname !== '/') {
         navigate(target)
-        window.setTimeout(() => scrollToHash(href), 80)
+        window.setTimeout(() => scrollToHash(href), 100)
       } else {
         navigate(target, { replace: true })
-        // Allow route/hash update, then scroll (also works when already on /)
         window.requestAnimationFrame(() => {
           if (!scrollToHash(href)) {
-            window.setTimeout(() => scrollToHash(href), 80)
+            window.setTimeout(() => scrollToHash(href), 100)
           }
         })
       }
@@ -115,13 +116,12 @@ export default function Header() {
 
   useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth > 500) setMenuOpen(false)
+      if (window.innerWidth > 1280) setMenuOpen(false)
     }
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
   }, [])
 
-  // Scroll when landing on /#section (direct load, back/forward, or in-app nav)
   useEffect(() => {
     if (location.pathname !== '/') return
     if (!location.hash) return
@@ -132,19 +132,17 @@ export default function Header() {
     }
   }, [location.pathname, location.hash])
 
-  const goToHash = (e, hash) => {
+  const goHome = (e) => {
     e.preventDefault()
     closeMenu()
     if (location.pathname !== '/') {
-      navigate('/' + hash)
-      window.setTimeout(() => scrollToHash(hash), 80)
+      navigate('/#home')
+      window.setTimeout(() => scrollToHash('#home'), 100)
     } else {
-      navigate('/' + hash, { replace: true })
-      scrollToHash(hash)
+      navigate('/#home', { replace: true })
+      scrollToHash('#home')
     }
   }
-
-  const goHome = (e) => goToHash(e, '#home')
 
   return (
     <header className={`site-header${menuOpen ? ' is-menu-open' : ''}`}>
@@ -167,10 +165,9 @@ export default function Header() {
 
       <nav id="primary-nav" className={menuOpen ? 'is-open' : ''} aria-label="Primary">
         <ul className="nav-main">
-          <li><a href="#introduction" onClick={(e) => goToHash(e, '#introduction')}>Introduction</a></li>
-          <li><a href="#about" onClick={(e) => goToHash(e, '#about')}>About Us</a></li>
-          <li><a href="#operating-model" onClick={(e) => goToHash(e, '#operating-model')}>Our Approach</a></li>
-          <li><a href="#team" onClick={(e) => goToHash(e, '#team')}>Meet the Team</a></li>
+          <NavDropdown label="Overview" links={OVERVIEW_LINKS} onNavigate={closeMenu} />
+          <NavDropdown label="Our Work" links={WORK_LINKS} onNavigate={closeMenu} />
+          <NavDropdown label="Our Insights" links={INSIGHTS_LINKS} onNavigate={closeMenu} />
         </ul>
       </nav>
     </header>
