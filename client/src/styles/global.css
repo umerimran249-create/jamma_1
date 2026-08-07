@@ -179,27 +179,39 @@ section {
 }
 .brand {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+  gap: 3px;
   min-width: 0;
   flex-shrink: 0;
   position: relative;
   z-index: 1002;
-  width: 110px;
-  height: 72px;
-  overflow: visible;
-}
-.brand img {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
   width: auto;
-  height: 108px;
-  max-width: none;
-  flex-shrink: 0;
-  object-fit: contain;
+  height: auto;
+  overflow: visible;
+  color: #fff;
+  line-height: 1;
+}
+.brand-name,
+.brand-tagline {
   display: block;
+  font-family: var(--display);
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #fff;
+}
+.brand-name {
+  font-weight: 400;
+  font-size: 2.1rem;
+  letter-spacing: 0.22em;
+  padding-right: 0.22em;
+}
+.brand-tagline {
+  font-weight: 400;
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  padding-right: 0.18em;
 }
 
 .nav-toggle {
@@ -2651,11 +2663,14 @@ footer {
   }
 
   .brand {
-    width: 120px;
-    height: 80px;
+    width: auto;
+    height: auto;
   }
-  .brand img {
-    height: 120px;
+  .brand-name {
+    font-size: 2.35rem;
+  }
+  .brand-tagline {
+    font-size: 0.62rem;
   }
 
   .site-header {
@@ -2743,11 +2758,14 @@ footer {
   }
 
   .brand {
-    width: 130px;
-    height: 80px;
+    width: auto;
+    height: auto;
   }
-  .brand img {
-    height: 130px;
+  .brand-name {
+    font-size: 2.5rem;
+  }
+  .brand-tagline {
+    font-size: 0.66rem;
   }
 
   nav a,
@@ -2861,8 +2879,9 @@ footer {
 /* Large tablets / small laptops: mobile nav only — keep desktop section layouts */
 @media (max-width: 500px) {
   .site-header { padding: 0 4vw; height: 64px; min-height: 64px; }
-  .brand { width: 88px; height: 64px; }
-  .brand img { height: 84px; }
+  .brand { width: auto; height: auto; }
+  .brand-name { font-size: 1.55rem; }
+  .brand-tagline { font-size: 0.42rem; }
 
   .nav-toggle { display: flex; }
 
@@ -3139,8 +3158,9 @@ footer {
   .section-head { margin-bottom: 32px; }
 
   .site-header { padding: 0 4vw; height: 60px; min-height: 60px; }
-  .brand { width: 80px; height: 60px; }
-  .brand img { height: 76px; }
+  .brand { width: auto; height: auto; }
+  .brand-name { font-size: 1.35rem; }
+  .brand-tagline { font-size: 0.38rem; }
 
   #primary-nav { padding-top: 76px; }
 

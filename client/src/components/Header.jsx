@@ -147,7 +147,8 @@ export default function Header() {
   return (
     <header className={`site-header${menuOpen ? ' is-menu-open' : ''}`}>
       <Link className="brand" to="/#home" onClick={goHome}>
-        <img src="/photos/Jamaa%20Logo.png" alt="JAMAA — Beyond Transactions." />
+        <span className="brand-name">JAMAA</span>
+        <span className="brand-tagline">BEYOND TRANSACTIONS</span>
       </Link>
 
       <button
