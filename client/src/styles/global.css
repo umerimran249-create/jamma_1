@@ -166,12 +166,12 @@ section {
   position: fixed;
   inset: 0 0 auto 0;
   min-height: 72px;
-  height: auto;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 12px 5vw;
+  padding: 0 5vw;
   background: var(--nav-bg);
   z-index: 10050;
   overflow: visible;
@@ -180,21 +180,26 @@ section {
 .brand {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   min-width: 0;
   flex-shrink: 0;
   position: relative;
   z-index: 1002;
-  width: 220px;
-  height: 60px;
-  overflow: hidden;
+  width: 110px;
+  height: 72px;
+  overflow: visible;
 }
 .brand img {
-  width: 270px;
-  height: 270px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: auto;
+  height: 108px;
   max-width: none;
   flex-shrink: 0;
   object-fit: contain;
+  display: block;
 }
 
 .nav-toggle {
@@ -757,6 +762,7 @@ body.nav-locked {
 
 /* ---------- Image divider (page 5) ---------- */
 .divider {
+  position: relative;
   padding: 0;
   min-height: 58vh;
   max-height: 680px;
@@ -769,6 +775,21 @@ body.nav-locked {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+}
+
+.divider-quote {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 32px 5vw;
+  max-width: min(920px, calc(100% - 64px));
+  text-align: center;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: clamp(1.45rem, 2.9vw, 2.25rem);
+  line-height: 1.45;
+  letter-spacing: 0;
+  color: #fff;
 }
 
 /* ---------- Services (page 6) — flip cards ---------- */
@@ -2630,17 +2651,17 @@ footer {
   }
 
   .brand {
-    width: 260px;
-    height: 70px;
+    width: 120px;
+    height: 80px;
   }
   .brand img {
-    width: 337px;
-    height: 337px;
+    height: 120px;
   }
 
   .site-header {
     min-height: 80px;
-    padding: 14px 5vw;
+    height: 80px;
+    padding: 0 5vw;
   }
 
   nav a,
@@ -2722,12 +2743,11 @@ footer {
   }
 
   .brand {
-    width: 300px;
+    width: 130px;
     height: 80px;
   }
   .brand img {
-    width: 382px;
-    height: 382px;
+    height: 130px;
   }
 
   nav a,
@@ -2840,9 +2860,9 @@ footer {
 
 /* Large tablets / small laptops: mobile nav only — keep desktop section layouts */
 @media (max-width: 500px) {
-  .site-header { padding: 10px 4vw; }
-  .brand { width: 180px; height: 50px; }
-  .brand img { width: 225px; height: 225px; }
+  .site-header { padding: 0 4vw; height: 64px; min-height: 64px; }
+  .brand { width: 88px; height: 64px; }
+  .brand img { height: 84px; }
 
   .nav-toggle { display: flex; }
 
@@ -3118,9 +3138,9 @@ footer {
   section { padding: 40px 4vw; }
   .section-head { margin-bottom: 32px; }
 
-  .site-header { padding: 10px 4vw; }
-  .brand { width: 160px; height: 46px; }
-  .brand img { width: 202px; height: 202px; }
+  .site-header { padding: 0 4vw; height: 60px; min-height: 60px; }
+  .brand { width: 80px; height: 60px; }
+  .brand img { height: 76px; }
 
   #primary-nav { padding-top: 76px; }
 

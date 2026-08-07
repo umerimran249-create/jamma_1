@@ -3,7 +3,6 @@ export default function Hero() {
   return (
     <section id="home" className="hero">
       <div className="hero-inner">
-        <span className="pill">Beyond Transactions</span>
         <h1>
           Optimizing Business.
           <br />

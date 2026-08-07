@@ -31,7 +31,7 @@ export const INSIGHTS_POSTS = [
   {
     slug: ARTICLE_SLUGS.weatherford,
     cardKey: 'weatherford',
-    title: 'Weatherford went Bankrupt in 2019 They Came Back. How?',
+    title: 'The Story Of Turn Around',
   },
   {
     slug: ARTICLE_SLUGS.inflexion,

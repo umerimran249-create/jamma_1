@@ -27,7 +27,7 @@ export const BLOG_PHOTOS = {
   },
   inflexion: {
     hero: '/photos/blog-6-hero.png',
-    inline1: '/photos/blog-6-inline-1.png',
+    inline1: '/photos/blog-6-inline-1.jpeg',
   },
 }
 

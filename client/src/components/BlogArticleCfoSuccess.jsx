@@ -17,20 +17,15 @@ export default function BlogArticleCfoSuccess({ id = 'insight-article' }) {
       </div>
 
       <div className="insight-article-body">
-        <div className="insight-article-row insight-article-row--cfo-intro">
-          <div className="insight-article-copy">
-            <p className="insight-article-kicker">The Heart of a CFO</p>
-            <p>Being a CFO is hard and it can be lonely. Why would you want to go down that road?</p>
-            <p>
-              I usually ask this question to all CFOs I interview, as this is one of the best ways to
-              uncover what drives them and whether they are suitable for a specific job. To no
-              surprise, a fondness for numbers is a given. However, for most CFOs it is not about
-              board decks or EBITDA, not even finance. At least in its technical sense.
-            </p>
-          </div>
-          <figure className="insight-article-figure insight-article-figure--portrait">
-            <img src={photos.portrait} alt="" />
-          </figure>
+        <div className="insight-article-full">
+          <p className="insight-article-kicker">The Heart of a CFO</p>
+          <p>Being a CFO is hard and it can be lonely. Why would you want to go down that road?</p>
+          <p>
+            I usually ask this question to all CFOs I interview, as this is one of the best ways to
+            uncover what drives them and whether they are suitable for a specific job. To no
+            surprise, a fondness for numbers is a given. However, for most CFOs it is not about
+            board decks or EBITDA, not even finance. At least in its technical sense.
+          </p>
         </div>
 
         <div className="insight-article-checks-section">
