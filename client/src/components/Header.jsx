@@ -15,7 +15,7 @@ const WORK_LINKS = [
   ['Impact', '#impact'],
 ]
 
-const INSIGHTS_LINKS = [['Blog', '/insights']]
+const INSIGHTS_LINKS = [['Blog', '#insights']]
 
 function canHover() {
   return typeof window !== 'undefined'

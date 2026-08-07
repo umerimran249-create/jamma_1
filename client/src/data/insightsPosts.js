@@ -36,7 +36,7 @@ export const INSIGHTS_POSTS = [
   {
     slug: ARTICLE_SLUGS.inflexion,
     cardKey: 'inflexion',
-    title: 'Inflexion Showcases AI Innovation at SAP Connect Day UAE 2026',
+    title: 'ERP Transformation Story',
     cropFocus: true,
   },
 ]

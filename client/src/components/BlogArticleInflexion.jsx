@@ -12,7 +12,7 @@ export default function BlogArticleInflexion({ id = 'insight-article' }) {
           alt=""
         />
         <h3 className="insight-article-hero-title">
-          Inflexion Showcases AI Innovation at SAP Connect Day UAE 2026
+          ERP Transformation Story
         </h3>
       </div>
 

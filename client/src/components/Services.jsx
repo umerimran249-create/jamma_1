@@ -36,7 +36,7 @@ const SERVICES = [
     ],
   },
   {
-    title: 'Project & Investment Advisory',
+    title: 'Project Management Advisory',
     image: '/images/service-4.png',
     variant: 'gold',
     items: [
