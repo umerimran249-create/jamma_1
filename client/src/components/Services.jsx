@@ -42,8 +42,7 @@ const SERVICES = [
     items: [
       'AI Driven Financial Modelling',
       'Pricing Strategy & Bankability',
-      'Capital Restructuring',
-      'Investment Readiness',
+      'M&A Integration Advisory',
     ],
   },
 ]
