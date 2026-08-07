@@ -46,28 +46,29 @@ export default function Impact() {
         {CARDS.map((card) => {
           const isFlipped = flipped === card.title
           return (
-            <div
-              key={card.title}
-              className={`impact-flip${isFlipped ? ' is-flipped' : ''}`}
-              onClick={() => toggle(card.title)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault()
-                  toggle(card.title)
-                }
-              }}
-              role="button"
-              tabIndex={0}
-              aria-label={`${card.title}. ${isFlipped ? 'Show title' : 'Show details'}`}
-            >
-              <div className="impact-flip-inner">
-                <div className="impact-flip-front">
-                  <img className="flip-cover-img" src={card.image} alt="" />
-                  <div className="impact-flip-shade" aria-hidden="true" />
-                  <h3>{card.title}</h3>
-                </div>
-                <div className={`impact-flip-back ${card.variant}`}>
-                  <p>{card.text}</p>
+            <div key={card.title} className="impact-flip-cell">
+              <div
+                className={`impact-flip${isFlipped ? ' is-flipped' : ''}`}
+                onClick={() => toggle(card.title)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    toggle(card.title)
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                aria-label={`${card.title}. ${isFlipped ? 'Show title' : 'Show details'}`}
+              >
+                <div className="impact-flip-inner">
+                  <div className="impact-flip-front">
+                    <img className="flip-cover-img" src={card.image} alt="" />
+                    <div className="impact-flip-shade" aria-hidden="true" />
+                    <h3>{card.title}</h3>
+                  </div>
+                  <div className={`impact-flip-back ${card.variant}`}>
+                    <p>{card.text}</p>
+                  </div>
                 </div>
               </div>
             </div>

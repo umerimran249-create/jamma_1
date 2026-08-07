@@ -65,32 +65,33 @@ export default function Services() {
         {SERVICES.map((svc) => {
           const isFlipped = flipped === svc.title
           return (
-            <div
-              key={svc.title}
-              className={`svc-flip ${svc.variant}${isFlipped ? ' is-flipped' : ''}`}
-              onClick={() => toggle(svc.title)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault()
-                  toggle(svc.title)
-                }
-              }}
-              role="button"
-              tabIndex={0}
-              aria-label={`${svc.title}. ${isFlipped ? 'Show title' : 'Show details'}`}
-            >
-              <div className="svc-flip-inner">
-                <div className="svc-flip-front">
-                  <img className="flip-cover-img" src={svc.image} alt="" />
-                  <div className="flip-cover-shade" aria-hidden="true" />
-                  <h3>{svc.title}</h3>
-                </div>
-                <div className={`svc-flip-back ${svc.variant}`}>
-                  <ul>
-                    {svc.items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
+            <div key={svc.title} className="svc-flip-cell">
+              <div
+                className={`svc-flip ${svc.variant}${isFlipped ? ' is-flipped' : ''}`}
+                onClick={() => toggle(svc.title)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    toggle(svc.title)
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                aria-label={`${svc.title}. ${isFlipped ? 'Show title' : 'Show details'}`}
+              >
+                <div className="svc-flip-inner">
+                  <div className="svc-flip-front">
+                    <img className="flip-cover-img" src={svc.image} alt="" />
+                    <div className="flip-cover-shade" aria-hidden="true" />
+                    <h3>{svc.title}</h3>
+                  </div>
+                  <div className={`svc-flip-back ${svc.variant}`}>
+                    <ul>
+                      {svc.items.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>

@@ -585,7 +585,11 @@ body.nav-locked {
   max-width: none;
   width: 100%;
   margin: 0 auto;
-  perspective: 1200px;
+}
+/* Query container outside the 3D scene — layout containment flattens preserve-3d on iOS */
+.why-flip-cell {
+  width: 100%;
+  container-type: inline-size;
 }
 .why-flip {
   position: relative;
@@ -593,14 +597,17 @@ body.nav-locked {
   height: auto;
   aspect-ratio: 4 / 5;
   min-height: 300px;
-  container-type: inline-size;
   cursor: pointer;
+  /* Single perspective on the flip parent (not the grid) */
   perspective: 1000px;
+  -webkit-perspective: 1000px;
   outline: none;
-  background: #0d2b4a;
+  background: transparent;
   border-radius: 22px;
-  overflow: hidden;
+  /* overflow:hidden on a 3D parent breaks backface-visibility in iOS WebKit */
+  overflow: visible;
   box-shadow: 0 16px 36px rgba(11, 32, 54, 0.14);
+  -webkit-tap-highlight-color: transparent;
 }
 .why-flip:focus-visible {
   box-shadow: 0 0 0 3px rgba(198, 152, 47, 0.55);
@@ -611,16 +618,22 @@ body.nav-locked {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
-  border-radius: inherit;
+  border-radius: 22px;
+  /* Promote to its own compositor layer on WebKit */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 @media (hover: hover) and (pointer: fine) {
   .why-flip:hover .why-flip-inner,
   .why-flip:focus-within .why-flip-inner {
+    -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
   }
 }
 .why-flip.is-flipped .why-flip-inner {
+  -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
 .why-flip-front,
@@ -629,12 +642,15 @@ body.nav-locked {
   inset: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   border-radius: 22px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 28px 20px;
+  /* Clip media/corners on the face — not the 3D parent */
   overflow: hidden;
   text-align: center;
 }
@@ -643,6 +659,9 @@ body.nav-locked {
   gap: 16px;
   padding: 28px 20px;
   background-color: #0d2b4a;
+  /* translateZ keeps the face above the back in WebKit’s compositor */
+  -webkit-transform: rotateY(0deg) translateZ(1px);
+  transform: rotateY(0deg) translateZ(1px);
 }
 .why-flip-front h4,
 .svc-flip-front h3 {
@@ -656,6 +675,10 @@ body.nav-locked {
   height: clamp(48px, 18cqi, 88px);
   object-fit: contain;
   filter: brightness(0) invert(1);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .flip-cover-img {
   position: absolute;
@@ -667,9 +690,12 @@ body.nav-locked {
   object-position: center center;
   display: block;
   border-radius: inherit;
-  transform: none;
   opacity: 1;
   filter: brightness(1.05) saturate(1.08);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .flip-cover-shade {
   position: absolute;
@@ -683,6 +709,10 @@ body.nav-locked {
   );
   z-index: 1;
   pointer-events: none;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .why-flip-front h4 {
   font-family: var(--sans);
@@ -695,9 +725,15 @@ body.nav-locked {
   margin: 0;
   max-width: 12ch;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .why-flip-back {
-  transform: rotateY(180deg);
+  /* Pre-rotated so parent’s 180deg lands the back upright */
+  -webkit-transform: rotateY(180deg) translateZ(1px);
+  transform: rotateY(180deg) translateZ(1px);
   color: #fff;
 }
 .why-flip-back.navy { background: #0d2b4a; }
@@ -710,6 +746,10 @@ body.nav-locked {
   color: #fff;
   margin: 0;
   max-width: 18ch;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 @media (prefers-reduced-motion: reduce) {
   .why-flip-inner { transition: none; }
@@ -741,7 +781,10 @@ body.nav-locked {
   max-width: none;
   width: 100%;
   margin: 0 auto;
-  perspective: 1200px;
+}
+.svc-flip-cell {
+  width: 100%;
+  container-type: inline-size;
 }
 .svc-flip {
   position: relative;
@@ -749,16 +792,17 @@ body.nav-locked {
   height: auto;
   aspect-ratio: 4 / 5;
   min-height: 300px;
-  container-type: inline-size;
   cursor: pointer;
   perspective: 1000px;
+  -webkit-perspective: 1000px;
   border: none;
-  background: #0d2b4a;
+  background: transparent;
   padding: 0;
   outline: none;
   border-radius: 22px;
-  overflow: hidden;
+  overflow: visible;
   box-shadow: 0 16px 36px rgba(11, 32, 54, 0.14);
+  -webkit-tap-highlight-color: transparent;
 }
 .svc-flip:focus-visible {
   box-shadow: 0 0 0 3px rgba(198, 152, 47, 0.55);
@@ -769,18 +813,23 @@ body.nav-locked {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
-  border-radius: inherit;
+  border-radius: 22px;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 /* Desktop / pointer: hover flips */
 @media (hover: hover) and (pointer: fine) {
   .svc-flip:hover .svc-flip-inner,
   .svc-flip:focus-within .svc-flip-inner {
+    -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
   }
 }
 /* Touch / click: use is-flipped class */
 .svc-flip.is-flipped .svc-flip-inner {
+  -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
 .svc-flip-front,
@@ -789,6 +838,8 @@ body.nav-locked {
   inset: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   border-radius: 22px;
   display: flex;
   align-items: center;
@@ -801,6 +852,8 @@ body.nav-locked {
   color: #fff;
   text-align: center;
   padding: 28px 20px;
+  -webkit-transform: rotateY(0deg) translateZ(1px);
+  transform: rotateY(0deg) translateZ(1px);
 }
 .svc-flip-front h3 {
   font-family: var(--sans);
@@ -815,9 +868,14 @@ body.nav-locked {
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
   position: relative;
   z-index: 2;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .svc-flip-back {
-  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg) translateZ(1px);
+  transform: rotateY(180deg) translateZ(1px);
   color: #fff;
   text-align: center;
 }
@@ -830,6 +888,10 @@ body.nav-locked {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .svc-flip-back li {
   font-family: var(--sans);
@@ -837,6 +899,8 @@ body.nav-locked {
   font-size: clamp(0.88rem, 6cqi, 1.25rem);
   line-height: 1.35;
   color: #fff;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 @media (prefers-reduced-motion: reduce) {
   .svc-flip-inner { transition: none; }
@@ -964,7 +1028,10 @@ body.nav-locked {
   max-width: none;
   width: 100%;
   margin: 0 auto;
-  perspective: 1200px;
+}
+.impact-flip-cell {
+  width: 100%;
+  container-type: inline-size;
 }
 .impact-flip {
   position: relative;
@@ -972,14 +1039,15 @@ body.nav-locked {
   height: auto;
   aspect-ratio: 4 / 5;
   min-height: 300px;
-  container-type: inline-size;
   cursor: pointer;
   perspective: 1000px;
+  -webkit-perspective: 1000px;
   outline: none;
-  background: #eaf3fb;
+  background: transparent;
   border-radius: 22px;
-  overflow: hidden;
+  overflow: visible;
   box-shadow: 0 10px 28px rgba(11, 32, 54, 0.1);
+  -webkit-tap-highlight-color: transparent;
 }
 .impact-flip:focus-visible {
   box-shadow: 0 0 0 3px rgba(198, 152, 47, 0.55);
@@ -990,16 +1058,21 @@ body.nav-locked {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
-  border-radius: inherit;
+  border-radius: 22px;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 @media (hover: hover) and (pointer: fine) {
   .impact-flip:hover .impact-flip-inner,
   .impact-flip:focus-within .impact-flip-inner {
+    -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
   }
 }
 .impact-flip.is-flipped .impact-flip-inner {
+  -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
 .impact-flip-front,
@@ -1008,6 +1081,8 @@ body.nav-locked {
   inset: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   border-radius: 22px;
   display: flex;
   flex-direction: column;
@@ -1020,10 +1095,13 @@ body.nav-locked {
 .impact-flip-front {
   color: #fff;
   background-color: #eaf3fb;
+  -webkit-transform: rotateY(0deg) translateZ(1px);
+  transform: rotateY(0deg) translateZ(1px);
 }
 .impact-flip-front .flip-cover-img {
   /* Cover any residual rounded-corner fringe from source art */
-  transform: scale(1.12);
+  -webkit-transform: scale(1.12) translateZ(0);
+  transform: scale(1.12) translateZ(0);
   transform-origin: center center;
   filter: brightness(1.18) saturate(1.08);
 }
@@ -1040,6 +1118,10 @@ body.nav-locked {
   margin: 0;
   max-width: 14ch;
   text-shadow: 0 1px 8px rgba(20, 50, 90, 0.35);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .impact-flip-shade {
   position: absolute;
@@ -1053,9 +1135,14 @@ body.nav-locked {
   );
   z-index: 1;
   pointer-events: none;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .impact-flip-back {
-  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg) translateZ(1px);
+  transform: rotateY(180deg) translateZ(1px);
   color: #fff;
 }
 .impact-flip-back.navy { background: #0d2b4a; }
@@ -1068,6 +1155,10 @@ body.nav-locked {
   color: #fff;
   margin: 0;
   max-width: 20ch;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 @media (prefers-reduced-motion: reduce) {
   .impact-flip-inner { transition: none; }

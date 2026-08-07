@@ -49,29 +49,30 @@ export default function WhyJamaa() {
         {CARDS.map((card) => {
           const isFlipped = flipped === card.title
           return (
-            <div
-              key={card.title}
-              className={`why-flip ${card.variant}${isFlipped ? ' is-flipped' : ''}`}
-              onClick={() => toggle(card.title)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault()
-                  toggle(card.title)
-                }
-              }}
-              role="button"
-              tabIndex={0}
-              aria-label={`${card.title}. ${isFlipped ? 'Show title' : 'Show details'}`}
-            >
-              <div className="why-flip-inner">
-                <div className="why-flip-front">
-                  <img className="flip-cover-img" src={card.image} alt="" />
-                  <div className="flip-cover-shade" aria-hidden="true" />
-                  <img className="why-flip-icon" src={card.icon} alt="" />
-                  <h4>{card.title}</h4>
-                </div>
-                <div className={`why-flip-back ${card.variant}`}>
-                  <p>{card.text}</p>
+            <div key={card.title} className="why-flip-cell">
+              <div
+                className={`why-flip ${card.variant}${isFlipped ? ' is-flipped' : ''}`}
+                onClick={() => toggle(card.title)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    toggle(card.title)
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                aria-label={`${card.title}. ${isFlipped ? 'Show title' : 'Show details'}`}
+              >
+                <div className="why-flip-inner">
+                  <div className="why-flip-front">
+                    <img className="flip-cover-img" src={card.image} alt="" />
+                    <div className="flip-cover-shade" aria-hidden="true" />
+                    <img className="why-flip-icon" src={card.icon} alt="" />
+                    <h4>{card.title}</h4>
+                  </div>
+                  <div className={`why-flip-back ${card.variant}`}>
+                    <p>{card.text}</p>
+                  </div>
                 </div>
               </div>
             </div>
