@@ -1,7 +1,5 @@
 import { useState } from 'react'
 
-// Contact (page 13): dark section with details + brand, plus a
-// functional message form wired to the Express backend (/api/contact).
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [status, setStatus] = useState(null)
@@ -17,13 +15,20 @@ export default function Contact() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          name: form.name.trim(),
+          email: form.email.trim(),
+          message: form.message.trim(),
+        }),
       })
       if (!res.ok) throw new Error('failed')
       setStatus({ type: 'ok', text: 'Thank you for reaching out! We will contact you shortly.' })
       setForm({ name: '', email: '', message: '' })
     } catch {
-      setStatus({ type: 'err', text: 'Something went wrong. Please try again or email us directly.' })
+      setStatus({
+        type: 'err',
+        text: 'Something went wrong. Please try again or email us directly at partner@jamaaglobal.com.',
+      })
     } finally {
       setSubmitting(false)
     }
@@ -51,7 +56,7 @@ export default function Contact() {
             </p>
             <p>
               <img className="contact-icon" src="/images/icon-email.png" alt="" />
-              partner@jamaa-global.com
+              partner@jamaaglobal.com
             </p>
             <p>
               <img className="contact-icon" src="/images/icon-web.png" alt="" />
