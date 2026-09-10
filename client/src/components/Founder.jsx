@@ -82,6 +82,42 @@ export default function Founder() {
           </p>
         </div>
       </div>
+
+      <div
+        className="founder-block founder-block--side"
+        aria-label="Senior Advisor Concessions & Infrastructure"
+      >
+        <div className="founder-side-top">
+          <div className="founder-photo-wrap founder-photo-wrap--side">
+            <img
+              className="founder-photo-img"
+              src="/images/third%20founder.png"
+              alt="Dr. Ernest Poku, Senior Advisor Concessions & Infrastructure"
+            />
+          </div>
+          <div className="founder-side-intro">
+            <p className="founder-name">Dr. Ernest Poku</p>
+            <p className="founder-role">Senior Advisor Concessions &amp; Infrastructure</p>
+            <p>
+              Dr. Ernest Poku brings extensive international leadership across African-focused
+              infrastructure platforms, energy funds, and high-impact utility developments to his role at
+              JAMAA. As the former Executive Director of Africa Water Infrastructure Development Ltd, he
+              directed large-scale water project development across the continent, with a focus on Kenya
+              and South Africa. His advisory expertise spans the full project lifecycle, seamlessly
+              bridging Development Finance Institutions (DFIs), sovereign governments, institutional banks,
+              and technical, environmental, and social teams to deliver critical infrastructure and energy
+              assets.
+            </p>
+            <p>
+              With a global operating footprint across Europe, Asia, and Africa, Dr. Poku brings deep
+              cross-sector insight navigating both early-stage venture scaling and mature enterprise
+              expansion within the healthcare and energy sectors. He is a Chartered Engineer, a Chartered
+              Director, and a Fellow of both the Energy Institute and the Institute of Directors. Dr. Poku
+              holds a Bachelor&apos;s
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
   )
 }
