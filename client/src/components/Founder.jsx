@@ -112,8 +112,7 @@ export default function Founder() {
               With a global operating footprint across Europe, Asia, and Africa, Dr. Poku brings deep
               cross-sector insight navigating both early-stage venture scaling and mature enterprise
               expansion within the healthcare and energy sectors. He is a Chartered Engineer, a Chartered
-              Director, and a Fellow of both the Energy Institute and the Institute of Directors. Dr. Poku
-              holds a Bachelor&apos;s
+              Director, and a Fellow of both the Energy Institute and the Institute of Directors. Dr. Poku has an undergraduate degree in Engineering, a PhD in healthcare and is an alumnus of INSEAD through the International Directors Programme.&apos;s
             </p>
           </div>
         </div>
